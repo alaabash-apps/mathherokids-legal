@@ -1,17 +1,6 @@
 <html>
 <body>
 <pre>
-import React from "react";
-import { ScrollView, Text, View, StyleSheet, Pressable } from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
-import { useLocalSearchParams, useRouter } from "expo-router";
-import { Ionicons } from "@expo/vector-icons";
-
-import { colors } from "@/src/lib/theme";
-
-const PRIVACY = `MATH HERO KIDS — PRIVACY POLICY
-Last updated: ${new Date().toISOString().slice(0, 10)}
-
 WHAT WE COLLECT
 • Child's first name and chosen avatar (stored locally on this device)
 • Anonymous progress: which problems were attempted, answer correctness, timing
@@ -48,79 +37,8 @@ YOUR RIGHTS
 You can delete all data at any time from the Parent Dashboard → Reset Profile.
 
 CONTACT
-For privacy questions, contact: privacy@mathherokids.app
-`;
+For privacy questions, contact: alaabash@gmail.com
 
-const TERMS = `MATH HERO KIDS — TERMS OF USE
-Last updated: ${new Date().toISOString().slice(0, 10)}
-
-1. ACCEPTANCE
-By using Math Hero Kids, you (or your child's parent/guardian) agree to these terms.
-
-2. WHO CAN USE THE APP
-The app is designed for children ages 5-12 with adult supervision. Parents are
-responsible for any purchases or actions taken in the app.
-
-3. IN-APP PURCHASES
-• Purchases are final once delivered
-• Subscriptions auto-renew unless cancelled in your App Store / Play Store account
-• All purchases require parental verification (parental gate)
-• Refunds are handled by Apple / Google per their policies
-
-4. VIRTUAL CURRENCY
-Coins, gems, and stars have no real-world cash value, cannot be transferred,
-exchanged, or redeemed outside the app.
-
-5. ACCEPTABLE USE
-Do not attempt to reverse-engineer, modify, or exploit the app. Be respectful
-in any community features (currently none).
-
-6. INTELLECTUAL PROPERTY
-All app content (graphics, music, code) is owned by Math Hero Kids and may
-not be copied without permission.
-
-7. DISCLAIMERS
-The app is provided "as-is". We do not guarantee it will improve grades, but
-we do our best to make math fun.
-
-8. CHANGES
-We may update these terms; significant changes will be announced in-app.
-
-9. CONTACT
-support@mathherokids.app
-`;
-
-export default function Legal() {
-  const { doc = "privacy" } = useLocalSearchParams<{ doc?: string }>();
-  const router = useRouter();
-  const isPrivacy = doc === "privacy";
-  const text = isPrivacy ? PRIVACY : TERMS;
-  const title = isPrivacy ? "Privacy Policy" : "Terms of Use";
-
-  return (
-    <SafeAreaView style={styles.container} edges={["top", "bottom"]}>
-      <View style={styles.topbar}>
-        <Pressable testID="legal-back" onPress={() => router.back()} style={styles.iconBtn}>
-          <Ionicons name="chevron-back" size={24} color={colors.text} />
-        </Pressable>
-        <Text style={styles.title}>{title}</Text>
-        <View style={{ width: 40 }} />
-      </View>
-      <ScrollView contentContainerStyle={styles.scroll}>
-        <Text style={styles.body} testID="legal-body">{text}</Text>
-      </ScrollView>
-    </SafeAreaView>
-  );
-}
-
-const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: colors.bg },
-  topbar: { flexDirection: "row", alignItems: "center", justifyContent: "space-between", padding: 14 },
-  iconBtn: { width: 40, height: 40, borderRadius: 20, backgroundColor: colors.surface, alignItems: "center", justifyContent: "center" },
-  title: { fontSize: 20, fontWeight: "900", color: colors.text },
-  scroll: { padding: 20, paddingBottom: 40 },
-  body: { fontSize: 14, color: colors.text, lineHeight: 22, fontFamily: "System" },
-});
 </pre>
 </body>
 </html>
