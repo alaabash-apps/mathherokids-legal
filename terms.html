@@ -1,56 +1,6 @@
-<html><body><pre>import React from "react";
-import { ScrollView, Text, View, StyleSheet, Pressable } from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
-import { useLocalSearchParams, useRouter } from "expo-router";
-import { Ionicons } from "@expo/vector-icons";
-
-import { colors } from "@/src/lib/theme";
-
-const PRIVACY = `MATH HERO KIDS — PRIVACY POLICY
-Last updated: ${new Date().toISOString().slice(0, 10)}
-
-WHAT WE COLLECT
-• Child's first name and chosen avatar (stored locally on this device)
-• Anonymous progress: which problems were attempted, answer correctness, timing
-• Coin / gem / streak totals (no real money, no personal info)
-
-WHAT WE DO NOT COLLECT
-• No real names, emails, phone numbers, addresses, or photos
-• No GPS / precise location
-• No microphone, camera, or contacts
-• No personal advertising identifiers
-• No behavioral tracking across other apps or websites
-
-ADS (COPPA COMPLIANT)
-• Only non-personalized, contextual ads (G-rated)
-• All ad requests tagged as child-directed
-• A parental gate is required before any ad is shown or any purchase is made
-• You can remove ads forever with a one-time purchase
-
-PURCHASES
-• Processed by Apple App Store / Google Play
-• We never see your credit card or billing info
-• All purchases require parental verification
-
-CHILDREN'S PRIVACY (COPPA / GDPR-K)
-We comply with the Children's Online Privacy Protection Act (COPPA) in the US
-and GDPR-K in the EU. We do not knowingly collect personal information from
-children under 13 beyond what is necessary to operate the app.
-
-DATA STORAGE
-Progress data is stored on a secure server using anonymous identifiers. No
-data is sold or shared with advertisers or third parties.
-
-YOUR RIGHTS
-You can delete all data at any time from the Parent Dashboard → Reset Profile.
-
-CONTACT
-For privacy questions, contact: privacy@mathherokids.app
-`;
-
-const TERMS = `MATH HERO KIDS — TERMS OF USE
-Last updated: ${new Date().toISOString().slice(0, 10)}
-
+<html>
+  <body>
+    <pre>
 1. ACCEPTANCE
 By using Math Hero Kids, you (or your child's parent/guardian) agree to these terms.
 
@@ -85,36 +35,6 @@ We may update these terms; significant changes will be announced in-app.
 
 9. CONTACT
 support@mathherokids.app
-`;
-
-export default function Legal() {
-  const { doc = "privacy" } = useLocalSearchParams<{ doc?: string }>();
-  const router = useRouter();
-  const isPrivacy = doc === "privacy";
-  const text = isPrivacy ? PRIVACY : TERMS;
-  const title = isPrivacy ? "Privacy Policy" : "Terms of Use";
-
-  return (
-    <SafeAreaView style={styles.container} edges={["top", "bottom"]}>
-      <View style={styles.topbar}>
-        <Pressable testID="legal-back" onPress={() => router.back()} style={styles.iconBtn}>
-          <Ionicons name="chevron-back" size={24} color={colors.text} />
-        </Pressable>
-        <Text style={styles.title}>{title}</Text>
-        <View style={{ width: 40 }} />
-      </View>
-      <ScrollView contentContainerStyle={styles.scroll}>
-        <Text style={styles.body} testID="legal-body">{text}</Text>
-      </ScrollView>
-    </SafeAreaView>
-  );
-}
-
-const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: colors.bg },
-  topbar: { flexDirection: "row", alignItems: "center", justifyContent: "space-between", padding: 14 },
-  iconBtn: { width: 40, height: 40, borderRadius: 20, backgroundColor: colors.surface, alignItems: "center", justifyContent: "center" },
-  title: { fontSize: 20, fontWeight: "900", color: colors.text },
-  scroll: { padding: 20, paddingBottom: 40 },
-  body: { fontSize: 14, color: colors.text, lineHeight: 22, fontFamily: "System" },
-});</pre></body></html>
+</pre>
+</body>
+</html>
